@@ -93,6 +93,6 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-IMAGES_STORE = '/Users/mac/www/python/images/luohua/wm'
+IMAGES_STORE = '/Users/mac/www/python/images/qq/japan'
 # 图片的下载地址 根据item中的字段来设置哪一个内容需要被下载
 IMAGES_URLS_FIELD ='img'

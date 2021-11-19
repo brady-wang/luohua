@@ -50,4 +50,5 @@ class WangPipeline(ImagesPipeline):
         name = request.meta['name']  # 接收上面meta传递过来的图片名称
         name = re.sub(r'[？\\*|“<>:/]', '', name)  # 过滤windows字符串，不经过这么一个步骤，你会发现有乱码或无法下载
         filename = name + '.jpg'  # 添加图片后缀名
+        #print("download image ",filename)
         return filename

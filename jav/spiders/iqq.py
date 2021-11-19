@@ -3,10 +3,10 @@ from scrapy import Request
 from jav.items import JavItem
 
 class FirstSpider(scrapy.Spider):
-    name = 'first'
-    allowed_domains = ['k.luohua186.com']
+    name = 'qq'
+    allowed_domains = ['iqq1.fun', 'jp.netcdn.space']
 
-    start_urls = ['https://javdb.com/uncensored']
+    start_urls = ['https://avmoo.casa/cn/actresses/page/1']
 
 
 
@@ -23,27 +23,27 @@ class FirstSpider(scrapy.Spider):
             "upgrade-insecure-requests": "1",
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
         }
-        start_url = 'http://k.luohua186.com/xxfj/wm2q/'
+        start_url = 'https://iqq1.fun/?cat=jp'
         yield scrapy.Request(url=start_url, headers=headers, cookies=cookie)
 
     def parse(self, response):
         print(response.status)
 
-        print("crawl page "+ response.url)
+        print("----------crawl page " + response.url)
 
         if response.status == 200:
-            print("crawl page start ",response.url)
-            ul = response.xpath('//div[@class="list"]//ul//li')
+            ul = response.xpath('//div[@class="type_movie_clips"]//li[@class="one_type"]')
             item = JavItem()
             if len(ul) > 0 :
                 for li in ul:
-                    title = li.xpath(".//a/@title").extract_first()
+                    title = li.xpath(".//h3/text()").extract_first()
                     img = li.xpath(".//img/@src").extract_first()
+
                     item['image_name'] = title
                     item['image_urls'] = img
                     yield item
 
-            nextPage = response.xpath('//div[@class="page"]/a[last()]/@href').extract_first()
+            nextPage = response.xpath('//a[contains(text(),">")]//@href').extract_first()
             if nextPage is not None:
                 url = response.urljoin(nextPage)
                 yield scrapy.Request(url, self.parse)
