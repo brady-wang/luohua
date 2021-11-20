@@ -4,7 +4,7 @@ from jav.items import JavItem
 
 class FirstSpider(scrapy.Spider):
     name = 'missav'
-    allowed_domains = ['iqq1.fun', 'jp.netcdn.space']
+    allowed_domains = ['missav.com']
 
     start_urls = ['https://avmoo.casa/cn/actresses/page/1']
 
@@ -43,7 +43,7 @@ class FirstSpider(scrapy.Spider):
                     item['image_urls'] = img
                     yield item
 
-            nextPage = response.xpath('//a[contains(text(),">")]//@href').extract_first()
-            if nextPage is not None:
-                url = response.urljoin(nextPage)
-                yield scrapy.Request(url, self.parse)
+            # nextPage = response.xpath('//a[contains(text(),">")]//@href').extract_first()
+            # if nextPage is not None:
+            #     url = response.urljoin(nextPage)
+            #     yield scrapy.Request(url, self.parse)

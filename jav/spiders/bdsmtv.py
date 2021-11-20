@@ -3,8 +3,8 @@ from scrapy import Request
 from jav.items import JavItem
 
 class FirstSpider(scrapy.Spider):
-    name = 'qq'
-    allowed_domains = ['iqq1.fun', 'jp.netcdn.space']
+    name = 'bdsmtv'
+    allowed_domains = ['bdsmtv.cc']
 
     start_urls = ['https://avmoo.casa/cn/actresses/page/1']
 
@@ -23,7 +23,7 @@ class FirstSpider(scrapy.Spider):
             "upgrade-insecure-requests": "1",
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
         }
-        start_url = 'https://iqq1.fun/search.php?kw_type=key&kw=%E9%97%AE%E7%AD%94'
+        start_url = 'https://bdsmtv.cc/?new=1'
         yield scrapy.Request(url=start_url, headers=headers, cookies=cookie)
 
     def parse(self, response):
